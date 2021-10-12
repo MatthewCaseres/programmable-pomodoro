@@ -2,7 +2,8 @@ import gspread
 import asyncio
 from programmable_pomodoro import Pomodoro
 from datetime import timedelta
-
+# This is like an enum so I can have consistent naming in my log data. 
+# The first element of the tuple is the category, the second is the name of the task.
 class Tasks:
     ROSALIND = ('work', 'rosalind')
     SCHOOL = ('work', 'school')
