@@ -11,10 +11,10 @@ class Tasks:
     CARDIO = ('exercise', 'cardio')
     NO_INTERNET = ('maintenance', 'no internet')
 
-category, task = Tasks.NO_INTERNET
-workInterval = timedelta(hours=2)
-breakInterval = timedelta(minutes=8)
-goal = timedelta(hours=2)
+category, task = Tasks.OPEN_SOURCE
+workInterval = timedelta(minutes=30)
+breakInterval = timedelta(minutes=6)
+goal = timedelta(hours=1)
 
 pom = Pomodoro(task, workInterval, breakInterval, goal)
 
@@ -22,7 +22,8 @@ pom = Pomodoro(task, workInterval, breakInterval, goal)
 logs = asyncio.run(pom.work())
 logs = [
     (
-        category, task,
+        category if task != 'break' else 'break', 
+        task,
         start.strftime("%m/%d/%Y %H:%M:%S"),
         finish.strftime("%m/%d/%Y %H:%M:%S"),
         (finish - start).total_seconds()/3600
