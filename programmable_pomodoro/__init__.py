@@ -1,17 +1,17 @@
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 import asyncio
 from datetime import datetime, timedelta
 from aioconsole import ainput
 from os import name, system
 import colorama
-import simpleaudio as sa
+# import simpleaudio as sa
 import importlib.resources
 from . import audio
 
 # Load the audio file
-with importlib.resources.path(audio, "alarm.wav") as alarmPath:
-    wave_obj = sa.WaveObject.from_wave_file(str(alarmPath))
+# with importlib.resources.path(audio, "alarm.wav") as alarmPath:
+#     wave_obj = sa.WaveObject.from_wave_file(str(alarmPath))
 
 # Provide cross platform coloring for Windows users.
 colorama.init()
@@ -88,7 +88,7 @@ class Pomodoro:
             task = self.tasks[-1]
             task.endTime = datetime.now()
             if not task.finished and task.endTime - task.startTime >= task.workInterval:
-                wave_obj.play()
+                # wave_obj.play()
                 task.finished = True
             print(self)
             await asyncio.sleep(1)
